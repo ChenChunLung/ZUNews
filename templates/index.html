@@ -1,0 +1,40 @@
+{% extends 'base.html'  %}
+{% block title %} index {% endblock %}
+{% block content %}
+
+
+<div class="contentbox" >
+    <table width="100%">
+        <tr>
+            <th align="left">Catego</th>
+            <th align="left">Title</th>
+            <th align="left">Time</th>
+            <th align="left">Press</th>
+
+        </tr>
+        {% for unit in newsunits  %}
+            <tr class="alt">
+                <td><div class="typeblock">[ {{ unit.catego }} ]</div></td>
+                <td><a href="/detail/{{unit.id}}/"> {{ unit.title  }} </a></td>
+                <td>{{ unit.pubtime  }}</td>
+                <td>{{ unit.press  }}</td>
+
+            </tr>    
+        {% empty  %}
+
+
+        {% endfor %}
+
+        <h2 align="left"> Display student Table All Data</h2>
+        {% if request.user.is_authenticated  %}
+            Welcome: {{name}}
+            <p><a href="/logout/"> LogOut </a> </p>
+        {% else  %}
+            <p> You Not logIn ~~  </p>
+            <a href="/login/"> LogIn </a>
+        {% endif  %}
+        <span style="color:red">{{message}}</span>
+    </table>    
+</div>
+
+{% endblock %}

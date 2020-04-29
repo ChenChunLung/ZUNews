@@ -19,4 +19,11 @@ from news_app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('index/<int:id>', views.index),
+    path('detail/<int:id>', views.detail),
+    path('', views.index),
+
 ]
+
+
+
